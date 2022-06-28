@@ -1,0 +1,38 @@
+#navbar {
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 16px;
+}
+
+#items_navbar {
+  position: relative;
+   left: -2em;
+}
+
+#navbar .logo-nav {
+  position:absolute; 
+  top:0px; 
+  left:1%;
+}
+
+
+@media screen and (max-width: 1200px) {
+  #items_navbar a {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 972px) {
+  #items_navbar a {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 578px) {
+  #items_navbar a {
+    font-size: 10px;
+    
+  }
+}

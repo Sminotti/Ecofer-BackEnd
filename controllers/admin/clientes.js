@@ -1,0 +1,77 @@
+const model = require("../../models/clientes");
+const { get: getImgClientes } = require("../../models/cliimagenes");
+const { get: getEmpresas } = require("../../models/empresas");
+const { get: getPersonas } = require("../../models/personas");
+
+
+
+const all = async (req, res) => {
+  try {
+    const clientes = await model.get(); // [{}]
+    const imgClientes = await getImgClientes(); // [{}]
+    const empresas = await getEmpresas(); // [{}]
+    const personas = await getPersonas(); // [{}]
+     //res.json(clientes, imgclientes, empresas, personas);
+    res.render("adminClientes", { clientes, imgClientes, empresas, personas });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const single = async (req, res) => {
+  try {
+   
+    const { id } = req.params;
+    const [imgCliente] = await model.single(id);
+    const [cliente] = await model.single(id);
+    const [persona] = await model.single(id);
+    const [empresa] = await model.single(id);
+    //res.json(cliente, imgcliente, empresa, imgEmpresa);
+    res.render("adminCliente", { cliente, imgCliente, empresa, persona });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const create = async (req, res) => {
+  
+  const idFile = await service.createCliente(req.body, req.file);
+  res.redirect("/admin/clientes/all");
+};
+
+const del = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await model.del(id);
+    res.redirect("/admin/clientes/all");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const singleUpdate = async (req, res) => {
+  try{
+    
+    const { id } = req.params;
+    const [updateImgCliente] = await model.single(id);
+    const [updateCliente] = await model.single(id);
+    const [updatePersona] = await model.single(id);
+    const [updateEmpresa] = await model.single(id);
+    //res.json(updateImgCliente, updateCliente, updatePersona, updateEmpresa);
+    res.render("adminUpdateProducto", { updateImgCliente, updateCliente, updatePersona, updateEmpresa });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+const update = async (req, res) =>{
+  model
+    .update(req.body, req.params.id)
+    .then((resultado) => res.redirect("/admin/clientes/all"))
+    .catch((e) => console.log(error));
+    
+};
+
+
+module.exports = { all,create,del,singleUpdate,single,update};

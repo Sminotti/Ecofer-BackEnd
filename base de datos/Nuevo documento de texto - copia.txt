@@ -1,0 +1,566 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.3
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 10-01-2021 a las 16:57:47
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `ecofer`
+--
+CREATE DATABASE ecofer;
+USE ecofer;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carritocompras`
+--
+
+CREATE TABLE `carritocompras` (
+    `id` INT(11) NOT NULL,
+    `idProducto` INT(11) DEFAULT NULL,
+    `idVentas` INT(11) DEFAULT NULL,
+    `ts_create` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    `ts_update` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP () ON UPDATE CURRENT_TIMESTAMP ()
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_SPANISH2_CI;
+
+-- --------------------------------------------------------
+
+CREATE TABLE `categoriaproductos` (
+    `id` INT(11) NOT NULL,
+    `agExtintor` VARCHAR(255) COLLATE UTF8_SPANISH2_CI DEFAULT NULL,
+    `clase` VARCHAR(255) COLLATE UTF8_SPANISH2_CI DEFAULT NULL,
+    `descripcion` VARCHAR(255) COLLATE UTF8_SPANISH2_CI DEFAULT NULL,
+    `fuegos` VARCHAR(255) COLLATE UTF8_SPANISH2_CI DEFAULT NULL,
+    `habilitado` TINYINT(4) NOT NULL DEFAULT 1,
+    `eliminado` TINYINT(4) NOT NULL DEFAULT 0,
+    `aplicativos` VARCHAR(255) COLLATE UTF8_SPANISH2_CI DEFAULT NULL,
+    `ts_create` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    `ts_update` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP () ON UPDATE CURRENT_TIMESTAMP ()
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8 COLLATE = UTF8_SPANISH2_CI;
+
+--
+-- Volcado de datos para la tabla `categoriaproductos`
+--
+
+INSERT INTO `categoriaproductos` (`id`, `agExtintor`, `clase`, `descripcion`, `fuegos`, `habilitado`, `eliminado`, `aplicativos`, `ts_create`, `ts_update`) VALUES
+(1, 'agua', 'A', 'Los extintores de agua bajo presión son diseñados para proteger áreas que contienen riesgos de fuego Clase A (combustibles sólidos)', 'fuegos de clase A sin electricidad', 1, 0, 'Carpinterías, industrias de muebles, aserraderos, depósitos, hospitales, etc', '2021-01-04 21:07:30', '2021-01-04 21:07:30'),
+(2, 'agua pulverizada', 'A , C', 'Los extintores de agua pulverizada son diseñados para proteger todas las áreas que contienen riesgos de fuegos Clase A (combustibles sólidos) y Clase C (equipos eléctricos energizados) en forma eficiente y segura', 'fuegos de clase A y C.', 1, 0, 'servicios aéreos, edificios de departamentos, bancos museos oficinas, hospitales, centro de cómputos, industrias electrónicas, centro de telecomunicaciones, escuelas, supermercados, etc.', '2021-01-04 21:10:37', '2021-01-04 21:18:06'),
+(3, 'Espuma', 'A Y B', 'Los extintores de agua con AFFF bajo presión son diseñados para proteger áreas que contienen riesgos de fuego Clase A (combustibles sólidos) y Clase B (combustibles líquidos y gaseosos)', 'fuegos de clase A y B', 1, 0, ' Industrias, equipos eléctricos, viviendas, transporte, comercios, escuelas, aviación, garajes, etc.', '2021-01-04 21:15:42', '2021-01-04 21:15:42'),
+(4, 'Polvo', 'A,B,C', 'Los extinguidores de polvo químico seco (ABC) son diseñados para proteger áreas que contienen riesgos de fuego Clase A (combustibles sólidos), Clase B (combustibles líquidos y gaseosos), Clase C (equipos eléctricos energizados) y Clase D (metales combusti', 'fuegos de clase A, B, C y eléctricos', 1, 0, 'Industrias, oficinas, viviendas, transporte, comercios, escuelas, aviación, garajes, etc.', '2021-01-04 21:16:51', '2021-01-04 21:16:51'),
+(5, 'Co2', 'A,B,C', 'Los extintores de dióxido de carbono son diseñados para proteger áreas que contienen riesgos de incendio Clase B (combustibles líquidos y gaseosos) y Clase C (equipos eléctricos energizados)', 'fuegos de clase A, B, C y eléctricos', 1, 0, ' Industrias, equipos eléctricos, viviendas, transporte, comercios, escuelas, aviación, garajes, etc.', '2021-01-04 21:17:55', '2021-01-04 21:17:55');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoriaventas`
+--
+
+CREATE TABLE `categoriaventas` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `habilitado` int(4) NOT NULL DEFAULT 1,
+  `eliminado` int(4) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id` int(4) NOT NULL,
+  `idEmpresa` int(4) DEFAULT NULL,
+  `idPersonas` int(4) DEFAULT NULL,
+  `idUsuario` int(4) DEFAULT NULL,
+  `eliminado` int(11) NOT NULL DEFAULT 1,
+  `habilitado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tareaproceso`
+--
+
+CREATE TABLE `tareaproceso` (
+  `id` int(4) NOT NULL,
+  `tarea` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `direccion` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `realiza` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `idCliente` int(4) NOT NULL,
+
+  `eliminado` int(11) NOT NULL DEFAULT 1,
+  `habilitado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tarealista`
+--
+
+CREATE TABLE `tarealista` (
+  `id` int(4) NOT NULL,
+  `tarea` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `direccion` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `realiza` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `idCliente` int(4) NOT NULL,
+
+  `eliminado` int(11) NOT NULL DEFAULT 1,
+  `habilitado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tareaterminada`
+--
+
+CREATE TABLE `tareaterminada` (
+  `id` int(4) NOT NULL,
+  `tarea` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `direccion` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `realiza` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `idCliente` int(4) NOT NULL,
+
+  `eliminado` int(11) NOT NULL DEFAULT 1,
+  `habilitado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+--
+-- Estructura de tabla para la tabla `clientesimagen`
+--
+
+CREATE TABLE `clientesimagen` (
+  `id` int(4) NOT NULL,
+  `idCliente` int(4) DEFAULT NULL,
+  `uid` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `habilitado` int(11) NOT NULL DEFAULT 1,
+  `eliminado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empresas`
+--
+
+CREATE TABLE `empresas` (
+  `id` int(4) NOT NULL,
+  `razonSocial` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `nombreFantasia` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `habilitado` int(11) NOT NULL DEFAULT 1,
+  `elliminado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `empresas`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `personas`
+--
+
+CREATE TABLE `personas` (
+  `id` int(4) NOT NULL,
+  `apellido` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `nombre` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `codPostal` int(11) DEFAULT NULL,
+  `cuitCuil` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `direccion` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `mail` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `telefono` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `dni` int(45) DEFAULT NULL,
+  `habilitado` int(11) NOT NULL DEFAULT 1,
+  `eliminado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `personas`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(4) NOT NULL,
+  `nombre` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `idCategoria` int(4) DEFAULT NULL,
+  `idProveedor` int(4) DEFAULT NULL,
+  `kilos` int(4) DEFAULT NULL,
+  `numeroSerie` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `observacionesProd` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `precioCosto` int(10) DEFAULT NULL,
+  `precioVenta` int(10) DEFAULT NULL,
+  `unidades` int(4) DEFAULT NULL,
+  `habilitado` int(11) NOT NULL DEFAULT 1,
+  `eliminado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productosimagen`
+--
+
+CREATE TABLE `productosimagen` (
+  `id` int(4) NOT NULL,
+  `idProductos` int(4) DEFAULT NULL,
+  `uid` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `idCloudinary` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `habilitado` int(11) NOT NULL DEFAULT 1,
+  `elimanado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `productosimagen`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores`
+--
+
+CREATE TABLE `proveedores` (
+  `id` int(4) NOT NULL,
+  `codPostal` int(11) DEFAULT NULL,
+  `contacto` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `cuil` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `direccion` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `localidad` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `nombreFantasia` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `observacionesProv` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `razonSocial` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `telefono` int(45) DEFAULT NULL,
+  `habilitado` int(11) NOT NULL DEFAULT 1,
+  `eliminado` int(11) NOT NULL DEFAULT 0,
+  `tc_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `proveedores`
+--
+
+INSERT INTO `proveedores` (`id`, `codPostal`, `contacto`, `cuil`, `direccion`, `localidad`, `nombreFantasia`, `observacionesProv`, `razonSocial`, `telefono`, `habilitado`, `eliminado`, `tc_create`, `ts_update`) VALUES
+(1, 1437, 'JOSE', '20-20258654-2', 'AV CENTENERA 2654', 'POMPEYA', 'RULEMANES CENTENERA', 'KHASHVLASJD', 'PEDRO JOSE ANTONIO', 1165239874, 1, 0, '2021-01-04 20:59:16', '2021-01-04 20:59:16'),
+(2, 1405, 'JOSE', '20-25632569-2', 'D', 'POMPEYA', 'PROVEEDOR2', 'DFSDFSDFSDFSDF', 'PROVEEDOR2', 1162359874, 1, 0, '2021-01-10 14:40:41', '2021-01-10 14:40:41');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedoresimagen`
+--
+
+CREATE TABLE `proveedoresimagen` (
+  `id` int(4) NOT NULL,
+  `idProveedor` int(4) DEFAULT NULL,
+  `uid` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `habilitado` int(11) NOT NULL DEFAULT 1,
+  `eliminado` int(11) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(4) NOT NULL,
+  `idEmpresa` int(4) DEFAULT NULL,
+  `idPersona` int(4) DEFAULT NULL,
+  `confirmacionCorreo` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `role` tinyint(4) NOT NULL DEFAULT 0,
+  `usuario` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `habilitado` int(4) NOT NULL DEFAULT 1,
+  `eliminado` int(4) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuariosimagen`
+--
+
+CREATE TABLE `usuariosimagen` (
+  `id` int(4) NOT NULL,
+  `idUsuarios` int(4) DEFAULT NULL,
+  `uid` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `habilitado` tinyint(4) NOT NULL DEFAULT 1,
+  `eliminado` tinyint(4) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `usuariosimagen`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `id` int(4) NOT NULL,
+  `factura` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `idCliente` int(4) DEFAULT NULL,
+  `idProducto` int(4) DEFAULT NULL,
+  `impuestos` int(11) DEFAULT NULL,
+  `iva` int(11) DEFAULT NULL,
+  `montoBruto` int(11) DEFAULT NULL,
+  `montoNeto` int(11) DEFAULT NULL,
+  `habilitado` tinyint(4) NOT NULL DEFAULT 1,
+  `eliminado` tinyint(4) NOT NULL DEFAULT 0,
+  `ts_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ts_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `carritocompras`
+--
+ALTER TABLE `carritocompras`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `categoriaproductos`
+--
+ALTER TABLE `categoriaproductos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `categoriaventas`
+--
+ALTER TABLE `categoriaventas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `clientesimagen`
+--
+ALTER TABLE `clientesimagen`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `empresas`
+--
+ALTER TABLE `empresas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `personas`
+--
+ALTER TABLE `personas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `productosimagen`
+--
+ALTER TABLE `productosimagen`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `proveedoresimagen`
+--
+ALTER TABLE `proveedoresimagen`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idPersona` (`idPersona`),
+  ADD UNIQUE KEY `idEmpresa` (`idEmpresa`);
+
+--
+-- Indices de la tabla `usuariosimagen`
+--
+ALTER TABLE `usuariosimagen`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `carritocompras`
+--
+ALTER TABLE `carritocompras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `categoriaproductos`
+--
+ALTER TABLE `categoriaproductos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `categoriaventas`
+--
+ALTER TABLE `categoriaventas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `clientesimagen`
+--
+ALTER TABLE `clientesimagen`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `empresas`
+--
+ALTER TABLE `empresas`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT de la tabla `personas`
+--
+ALTER TABLE `personas`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `productosimagen`
+--
+ALTER TABLE `productosimagen`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedores`
+--
+ALTER TABLE `proveedores`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedoresimagen`
+--
+ALTER TABLE `proveedoresimagen`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de la tabla `usuariosimagen`
+--
+ALTER TABLE `usuariosimagen`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,24 @@
+.pull-right {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3.5em;
+  padding: 0.5%;
+  background: blue;
+}
+.pull-right button {
+  border-color: white;
+  margin: 1px;
+  height: 100%;
+  width: 30%;
+}
+.pull-right font {
+  width: 98%;
+  display: flex;
+  justify-content: flex-start;
+  color: aliceblue;
+}
+.styleTable {
+  width: 97%;
+  margin: auto;
+}

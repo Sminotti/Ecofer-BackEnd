@@ -1,0 +1,117 @@
+/*body{
+  background: white;
+  background-position: center center;
+  background-size: cover;/* ajusta la imagen a la pantalla automaticamente
+}*/
+
+.checkbox-style {
+  /*display:inline-block;*/
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.social-bar {
+  font-size: 16px;
+  position: fixed;
+  right: 0;
+  top: 35%;
+  text-decoration: none;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 100;
+}
+
+.icon {
+  color: white;
+  text-decoration: none;
+  padding: 0.7rem;
+  display: flex;
+  transition: all 0.5s;
+  width: 45px;
+}
+
+.icon-facebook {
+  background: #3b5998;
+}
+
+.icon-twitter {
+  background: #55acee;
+}
+
+.icon-youtube {
+  background: #ff0000;
+}
+
+.icon-instagram {
+  /*background: #e95950;*/
+  background: radial-gradient(
+      circle farthest-corner at 32% 106%,
+      #ffe17d 0,
+      #ffcd69 10%,
+      #fa9137 28%,
+      #eb4141 42%,
+      transparent 82%
+    ),
+    linear-gradient(135deg, #234bd7 12%, #c33cbe 58%);
+}
+.icon-messenger {
+  background: #0078ff;
+}
+
+.icon-whatsapp {
+  background: #25d366;
+}
+
+.icon-envelop {
+  background: orangered;
+}
+
+.icon-bullhorn {
+  background: black;
+}
+
+.icon-linkedin {
+  background: #007bb5;
+}
+
+.icon:first-child {
+  border-radius: 1rem 0 0 0;
+}
+
+.icon:last-child {
+  border-radius: 0 0 0 1rem;
+}
+
+.icon:hover {
+  padding-right: 5rem;
+  border-radius: 1rem 0 0 1rem;
+  text-decoration: none;
+  color: white;
+}
+
+@media screen and (max-width: 1300px) {
+  .social-bar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .social-bar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .social-bar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .social-bar {
+    display: none;
+  }
+}

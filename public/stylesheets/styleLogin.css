@@ -1,0 +1,17 @@
+
+.logoRegister-login {
+    text-align: center;
+    font-size: 3em;
+    padding-bottom: 1rem;
+}
+
+.logoRegister-login span {
+    color: #B70E21;
+}
+
+@media screen and (max-width: 578px) {
+    .logoRegister-login {
+     
+        font-size: 1.5em;
+    }
+}

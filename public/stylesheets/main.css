@@ -1,0 +1,34 @@
+
+*{
+  margin: 0px;
+  padding: 0px;
+};
+
+body {
+  background: #f2f2f2;
+  font-family: 'Roboto', sans-serif;
+  height:100%;
+}
+
+/*.container-prod {
+  min-height: calc(100vh - 325px - 60px);
+
+}
+.container-prov {
+  min-height: calc(100vh - 18em - 100px);
+}
+.container-catProd {
+  min-height: calc(100vh - 18em - 190px);
+}
+.container-index {
+  min-height: calc(100vh - 18em - 200px);
+}
+.container-upCatProd {
+  min-height: calc(100vh - 18em - 60px);
+}*/
+.container-login{
+  min-height: calc(100vh - 18em - 0px);
+}
+/*.container-faqs{
+  min-height: calc(100vh - 18em - 116px);
+}*/
