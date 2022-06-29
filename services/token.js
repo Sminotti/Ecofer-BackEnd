@@ -1,10 +1,10 @@
-import { sign, verify } from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
 
 const token = {
   getJwtToken: (paylod) => {
     const seed = process.env.SEED;
 
-    return sign(
+    return jwt.sign(
       {
         paylod
       },
@@ -15,7 +15,7 @@ const token = {
 
   comprobarToken: (token) => {
     const seed = process.env.SEED;
-    verify(token, seed, (err, decoded) => {
+    jwt.verify(token, seed, (err, decoded) => {
  
       if (err) {
         console.log("error: ", err);
@@ -30,5 +30,5 @@ const token = {
   },
 };
 
-export default { token };
+export default { token,comprobarToken };
 

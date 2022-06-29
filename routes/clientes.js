@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
-import { get, single as _single } from "./../models/clientes";
-import { get as getImgClientes } from "./../models/cliimagenes";
+import { get, single as _single } from "./../models/clientes.js";
+import { get as getImgClientes } from "./../models/cliimagenes.js";
 
 const all = async (req, res) => {
   try {

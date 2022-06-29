@@ -1,9 +1,9 @@
-import { create as createPersona } from "./../models/personas";
-import { create as createEmpresa } from "./../models/empresas";
-import { create as createUser, createImages } from "./../models/usuarios";
+import { create as createPersona } from "./../models/personas.js";
+import { create as createEmpresa } from "./../models/empresas.js";
+import { create as createUser, createImages } from "./../models/usuarios.js";
 //const { imgFile } = require("../utils/fileHandler");
 //import default from "./../services/mail";
-import { send } from "./../services/mail";
+import { send } from "./../services/mail.js";
 import sha1 from "sha1";
 import { v4 as uids } from "uuid";
 import { v2 as cloudinary } from "cloudinary";

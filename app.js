@@ -19,7 +19,7 @@ import { join } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { config } from "dotenv";
-import { auth } from "./middlewares/auth";// controlo el login
+import { auth } from "./middlewares/auth.js";// controlo el login
 config();
 
 // mercado pago
@@ -33,23 +33,23 @@ config();
 
 // guardo en una variable la ruta de los archivos a cargar cuando acceda a la url
 import session from "express-session";
-import index from "./routes/index";
-import registro from "./routes/registro";
-import productos from "./routes/productos";
-import clientes from "./routes/clientes";
-import login from "./routes/login";
-import contacto from "./routes/contacto";
-import faqs from "./routes/faqs";
-import about from "./routes/about";
+import index from "./routes/index.js";
+import registro from "./routes/registro.js";
+import productos from "./routes/productos.js";
+import clientes from "./routes/clientes.js";
+import login from "./routes/login.js";
+import contacto from "./routes/contacto.js";
+import faqs from "./routes/faqs.js";
+import about from "./routes/about.js";
 
-import adminCategoriasProd from "./routes/admin/categoriasProd";
-import adminCategoriasVentas from "./routes/admin/categoriasVentas";
-import adminProductos from "./routes/admin/productos";
-import adminVentas from "./routes/admin/ventas";
-import adminUsuarios from "./routes/admin/usuarios";
-import adminProveedores from "./routes/admin/proveedores";
-import adminClientes from "./routes/admin/clientes";
-import adminTareas from "./routes/admin/tareas";
+import adminCategoriasProd from "./routes/admin/categoriasProd.js";
+import adminCategoriasVentas from "./routes/admin/categoriasVentas.js";
+import adminProductos from "./routes/admin/productos.js";
+import adminVentas from "./routes/admin/ventas.js";
+import adminUsuarios from "./routes/admin/usuarios.js";
+import adminProveedores from "./routes/admin/proveedores.js";
+import adminClientes from "./routes/admin/clientes.js";
+import adminTareas from "./routes/admin/tareas.js";
 
 var app = express();
 

@@ -5,7 +5,7 @@ import multer from "multer"; // agrega al req ( el file para poder subir archivo
 const config = { dest: `./public/tmp` };//creo una variable con el destino temporal
 const upload = multer(config);
 
-import { all, single, create, singleUpdate, update, del } from "../../controllers/admin/productos";
+import { all, single, create, singleUpdate, update, del } from "../../controllers/admin/productos.js";
 
 
 

@@ -1,12 +1,7 @@
-import model from "../../models/clientes";
-import default from "../../models/cliimagenes";
-const { get: getImgClientes } = default;
-import _default from "../../models/empresas";
-const { get: getEmpresas } = _default;
-import __default from "../../models/personas";
-const { get: getPersonas } = __default;
-
-
+import model from "../../models/clientes.js";
+import { getImgClientes } from "../../models/cliimagenes.js";
+import { getEmpresas } from "../../models/empresas.js";
+import { getPersonas } from "../../models/personas.js";
 
 const all = async (req, res) => {
   try {

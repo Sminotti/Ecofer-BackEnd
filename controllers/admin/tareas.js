@@ -1,4 +1,4 @@
-import model from "../../models/tareas";
+import model from "../../models/tareas.js";
 
 const allTarea = async (req, res) => {
   try {

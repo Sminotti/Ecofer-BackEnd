@@ -3,7 +3,7 @@ const router = Router();
 
 
 
-import { all, single, filtrarProductos } from "../controllers/productos";
+import { all, single, filtrarProductos } from "../controllers/productos.js";
 
 
 router.get("/single/:id",single);

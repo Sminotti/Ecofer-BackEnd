@@ -1,4 +1,4 @@
-import model from "../../models/categoriasVentas";
+import model from "../../models/categoriasVentas.js";
 
 const all = async (req, res) => {
   console.log(req.params);

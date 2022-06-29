@@ -1,6 +1,6 @@
 // middleware comprobacion del schema
 // Entidad
-import { schemas } from "./../schemas/usuarios";
+import { schemas } from "./../schemas/usuarios.js";
 
 const validateLogin = (req, res, next) => {
   const { error, value } = schemas.auth.validate(req.body); // error, value

@@ -4,9 +4,9 @@ const router = Router();
 import multer from "multer"; // agrega al req ( el file para poder subir archivos) req.file
 const config = { dest: `./public/tmp` };//creo una variable con el destino temporal
 const upload = multer(config);//se lo agrego a otra variable llamando a multer
-import service from "../../services/proveedores";
+import service from "../../services/proveedores.js";
 
-import { all, single, singleUpdate, update, create, del } from "../../controllers/admin/proveedores";
+import { all, single, singleUpdate, update, create, del } from "../../controllers/admin/proveedores.js";
 
 router.get("/", all);
 router.get("/del/:id", del);

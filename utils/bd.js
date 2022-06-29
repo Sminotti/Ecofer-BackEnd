@@ -1,8 +1,8 @@
-const mysql = require("mysql");
-const util = require("util");
+import { createPool } from "mysql2";
+import { promisify } from "util";
 
 
-let pool = mysql.createPool({
+let pool = createPool({
   host: process.env.DB_HOST || "localhost",
   password: process.env.DB_PASSWORD || "",
   user: process.env.DB_USER || "root",
@@ -10,6 +10,6 @@ let pool = mysql.createPool({
   database: process.env.DB_NAME || "test",
   connectionLimit: 10,
 });
-pool.query = util.promisify(pool.query);
-module.exports = pool;
+pool.query = promisify(pool.query);
+export default pool;
 

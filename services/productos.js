@@ -1,4 +1,4 @@
-import { create, createImages, update, updateImage } from "../models/productos";
+import { create, createImages, update, updateImage } from "../models/productos.js";
 import { v2 as cloudinary } from "cloudinary";
 
 const createProducto = async (body, file, path) => {

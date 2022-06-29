@@ -3,8 +3,8 @@ const router = Router();
 
 
 var getIP = require('ipware')().get_ip;
-import { validateLogin } from "./../middlewares/usuarios";
-import { login } from "../controllers/login";
+import { validateLogin } from "./../middlewares/usuarios.js";
+import { login } from "../controllers/login.js";
 
 // req.cookie
 router.get("/", async (req, res, next) => {

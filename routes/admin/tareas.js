@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
 
-import { allTarea, createTarea, delTarea } from "../../controllers/admin/tareas";
+import { allTarea, createTarea, delTarea } from "../../controllers/admin/tareas.js";
 
 router.get("/", allTarea);
 

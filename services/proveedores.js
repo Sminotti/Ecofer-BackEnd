@@ -1,6 +1,6 @@
 
-import { create, createImages } from "../models/proveedores";
-import { imgFile } from "../utils/fileHandler";
+import { create, createImages } from "../models/proveedores.js";
+import { imgFile } from "../utils/fileHandler.js";
 
 const createProveedores = async (body, file) => {
   try {

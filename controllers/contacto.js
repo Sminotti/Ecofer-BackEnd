@@ -1,5 +1,4 @@
-import default from "./../services/mail";
-const { send } = default;
+import { send } from "./../services/mail.js";
 const mail = "msmdesarrolloinformatico@gmail.com";
 
 const sendEmail = async (req, res) => {

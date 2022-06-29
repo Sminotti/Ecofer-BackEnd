@@ -1,7 +1,7 @@
 import { Router } from "express";
 const router = Router();
 
-import { all, single, create, del } from "../../controllers/admin/ventas";
+import { all, single, create, del } from "../../controllers/admin/ventas.js";
 
 router.get("/all", all);
 router.get("/single", single)

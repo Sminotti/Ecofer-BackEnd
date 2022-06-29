@@ -1,11 +1,7 @@
-import model from "./../models/productos";
-import default from "./../models/prodimagenes";
-const { get: getImgProductos, single: imgSingle } = default;
-import _default from "./../models/proveedores";
-const { get: getProveedores } = _default;
-import __default from "./../models/categoriasProd";
-const { get: getCategorias } = __default;
-
+import model from "./../models/productos.js";
+import { getImgProductos, imgSingle } from "./../models/prodimagenes.js";
+import { getProveedores } from "./../models/proveedores.js";
+import { getCategorias } from "./../models/categoriasProd.js";
 
 const all = async (req, res) => {
   try {
@@ -14,8 +10,7 @@ const all = async (req, res) => {
     const productos = await model.get();
     const proveedores = await getProveedores();
     const categoriasProd = await getCategorias();
-    res.json( productos, imgProductos, proveedores, categoriasProd);
-    
+    res.json(productos, imgProductos, proveedores, categoriasProd);
   } catch (e) {
     console.log(e);
   }
@@ -30,26 +25,20 @@ const single = async (req, res) => {
     const [proveedor] = await model.single(id);
     const [categoriaProd] = await model.single(id);
     res.json(producto, imgProducto, proveedor, categoriaProd);
-  
   } catch (e) {
     console.log(e);
   }
 };
 
-
-const filtrarProductos = async (req,res) => {
+const filtrarProductos = async (req, res) => {
   try {
-    const {categoria} = req.params;
+    const { categoria } = req.params;
     const productos = await model.filtrarProductos(categoria);
     const categoriasProd = await getCategorias();
-    res.json( productos);
-  
+    res.json(productos);
   } catch (e) {
     console.log(e);
   }
 };
 
 export default { all, single, filtrarProductos };
-
-
-

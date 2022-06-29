@@ -1,11 +1,8 @@
-import model from "../../models/productos";
-import default from "../../models/prodimagenes";
-const { get: getImgProductos } = default;
-import _default from "../../models/proveedores";
-const { get: getProveedores } = _default;
-import __default from "../../models/categoriasProd";
-const { get: getCategorias } = __default;
-import service from "../../services/productos";
+import model from "../../models/productos.js";
+import { getImgProductos } from "../../models/prodimagenes.js";
+import { getProveedores } from "../../models/proveedores.js";
+import { getCategorias } from "../../models/categoriasProd.js";
+import service from "../../services/productos.js";
 
 import { response } from "express";
 // const adminProducto=false;

@@ -5,7 +5,7 @@ import multer from "multer"; // agrega al req ( el file para poder subir archivo
 const config = { dest: `./public/tmp` };//creo una variable con el destino temporal
 const upload = multer(config);//se lo agrego a otra variable llamando a multer
 
-import { create, verifyEmail } from "../controllers/registro";
+import { create, verifyEmail } from "../controllers/registro.js";
 
 router.get("/");
 

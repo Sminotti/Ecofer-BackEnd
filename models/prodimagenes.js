@@ -1,5 +1,5 @@
 import { response } from "express";
-import { query } from "../utils/bd";
+import { query } from "../utils/bd.js";
 const T_PRODUCTOS = "productos";
 const T_PROD_IMAGENES = "productosimagen";
 const T_PROVEEDORES = "proveedores";

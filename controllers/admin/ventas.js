@@ -1,4 +1,4 @@
-import model from "./../../models/ventas";
+import model from "./../../models/ventas.js";
 //const { get: getProductos } = require("./../../models/productos");
 
 const all = async (req, res) => {

@@ -2,7 +2,7 @@ import { Router } from "express";
 const router = Router();
 
 
-import { all, create, singleUpdate, update, del } from "../../controllers/admin/categoriasProd";
+import { all, create, singleUpdate, update, del } from "../../controllers/admin/categoriasProd.js";
 
 
 router.get("/", all);

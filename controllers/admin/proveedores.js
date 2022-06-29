@@ -1,4 +1,4 @@
-import model from "../../models/proveedores";
+import model from "../../models/proveedores.js";
 
 
 const all = async (req, res) => {

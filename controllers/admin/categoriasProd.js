@@ -1,4 +1,4 @@
-import model from "../../models/categoriasProd";
+import model from "../../models/categoriasProd.js";
 
 const all = async (req, res) => {
   try {

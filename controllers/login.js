@@ -1,12 +1,8 @@
 import sha1 from "sha1";
 
-import default from "../services/token";
-const { token } = default;
-
-import _default from "./../models/login";
-const { auth } = _default;
-
-import { dbFirebase } from "./../utils/firebase";
+import { token } from "../services/token.js";
+import { auth } from "./../models/login.js";
+import { dbFirebase } from "./../utils/firebase.js";
 
 const login = async (req, res) => {
   try {

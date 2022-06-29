@@ -1,5 +1,5 @@
 
-import { query } from "../utils/bd";
+import { query } from "../utils/bd.js";
 const T_USUARIOS = "usuarios";
 const T_USUARIOSIMAGEN = "usuariosimagen";
 

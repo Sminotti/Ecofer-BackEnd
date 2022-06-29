@@ -1,6 +1,6 @@
-import default from "./../services/registro";
-const { register } = default;
-import model from './../models/usuarios';
+import { register } from "./../services/registro.js";
+
+import model from './../models/usuarios.js';
 // const registroUsuario=false;
 
 const create = async (req, res) => {
