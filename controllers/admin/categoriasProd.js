@@ -1,4 +1,4 @@
-const model = require("../../models/categoriasProd");
+import model from "../../models/categoriasProd";
 
 const all = async (req, res) => {
   try {
@@ -40,4 +40,4 @@ const update = async (req, res) => {
   console.log(req.body);
 };
 
-module.exports = { all, create, singleUpdate, update, del };
+export default { all, create, singleUpdate, update, del };

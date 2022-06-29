@@ -1,4 +1,4 @@
-const model = require ("../../models/tareasProceso");
+import model from "../../models/tareasProceso";
 
 
 const allProceso = async (req, res) => {
@@ -43,4 +43,4 @@ const allProceso = async (req, res) => {
     }
   };
 
-  module.exports={createProceso,delProceso,allProceso};
+  export default{createProceso,delProceso,allProceso};

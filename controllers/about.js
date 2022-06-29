@@ -6,4 +6,4 @@ const all = (req, res, next) => {
   };
   
   
-  module.exports = { all };
+  export default { all };

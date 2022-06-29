@@ -1,10 +1,10 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const {all,create,del} = require("../../controllers/admin/categoriasVentas");;
+import { all, create, del } from "../../controllers/admin/categoriasVentas";;
 
 router.post("/create", create);
 router.get("/", all);
 router.get("/del/:id", del);
 
-module.exports = router;
+export default router;

@@ -1,11 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const model = require("./../models/clientes");
-const { get: getImgClientes } = require("./../models/cliimagenes");
+import { Router } from "express";
+const router = Router();
+import { get, single as _single } from "./../models/clientes";
+import { get as getImgClientes } from "./../models/cliimagenes";
 
 const all = async (req, res) => {
   try {
-    const clientes = await model.get(); // [{}]
+    const clientes = await get(); // [{}]
     const imgClientes = await getImgClientes(); // [{}]
     //res.json(clientes,imgClientes);
     res.render("clientes", { clientes, imgClientes });
@@ -17,11 +17,11 @@ const all = async (req, res) => {
 const single = async (req, res) => {
   console.log(req.params);
   const { id } = req.params;
-  const [cliente] = await model.single(id);
+  const [cliente] = await _single(id);
   //res.json(client,imgClientes);
   res.render("cliente", { cliente, imgClientes });
 };
 router.get("/single/:id", single);
 router.get("/all", all);
 
-module.exports = router;
+export default router;

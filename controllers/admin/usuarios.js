@@ -1,7 +1,10 @@
-const model = require("../../models/usuarios");
-const { get: getEmpresas} = require("../../models/empresas");
-const { get: getPersonas} = require("../../models/personas");
-const { get: getImgUsuarios } = require("../../models/usuariosimagen");
+import model from "../../models/usuarios";
+import default from "../../models/empresas";
+const { get: getEmpresas } = default;
+import _default from "../../models/personas";
+const { get: getPersonas } = _default;
+import __default from "../../models/usuariosimagen";
+const { get: getImgUsuarios } = __default;
 
 const all = async (req, res) => {
   try {
@@ -33,4 +36,4 @@ const single = async (req, res) => {
   }
 };
 
-module.exports = { all,single};
+export default { all,single};

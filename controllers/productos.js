@@ -1,7 +1,10 @@
-const model = require("./../models/productos");
-const { get: getImgProductos, single: imgSingle} = require("./../models/prodimagenes");
-const { get: getProveedores } = require("./../models/proveedores");
-const { get: getCategorias } = require("./../models/categoriasProd");
+import model from "./../models/productos";
+import default from "./../models/prodimagenes";
+const { get: getImgProductos, single: imgSingle } = default;
+import _default from "./../models/proveedores";
+const { get: getProveedores } = _default;
+import __default from "./../models/categoriasProd";
+const { get: getCategorias } = __default;
 
 
 const all = async (req, res) => {
@@ -46,7 +49,7 @@ const filtrarProductos = async (req,res) => {
   }
 };
 
-module.exports = { all, single, filtrarProductos };
+export default { all, single, filtrarProductos };
 
 
 

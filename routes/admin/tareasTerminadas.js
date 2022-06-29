@@ -1,10 +1,10 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const {allTerminada,createTerminada,delTerminada}= require("../../controllers/admin/tareasTerminadas");
+import { allTerminada, createTerminada, delTerminada } from "../../controllers/admin/tareasTerminadas";
 
 router.post("/create", createTerminada);
 router.get("/", allTerminada);
 router.get("/del/:id", delTerminada);
 
-module.exports = router;
+export default router;

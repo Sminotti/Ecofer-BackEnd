@@ -1,11 +1,12 @@
-const { create: createPersona } = require("./../models/personas");
-const { create: createEmpresa } = require("./../models/empresas");
-const { create: createUser, createImages } = require("./../models/usuarios");
+import { create as createPersona } from "./../models/personas";
+import { create as createEmpresa } from "./../models/empresas";
+import { create as createUser, createImages } from "./../models/usuarios";
 //const { imgFile } = require("../utils/fileHandler");
-const { send } = require("./../services/mail");
-const sha1 = require("sha1");
-const { v4: uids } = require("uuid");
-const cloudinary = require("cloudinary").v2;
+//import default from "./../services/mail";
+import { send } from "./../services/mail";
+import sha1 from "sha1";
+import { v4 as uids } from "uuid";
+import { v2 as cloudinary } from "cloudinary";
 
 const register = async (body, file,path) => {
 
@@ -77,4 +78,4 @@ const register = async (body, file,path) => {
   }
 };
 
-module.exports = { register };
+export default { register };

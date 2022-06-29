@@ -1,11 +1,11 @@
-const nodemailer = require("nodemailer");
+import { createTransport } from "nodemailer";
 
 const send = async ({ mail, subject = "Muchas gracias por registrarte", message:html }) => {
   try {
     console.log("desde: ",process.env.MAIL_USER);
     // HTTPS -> sacar verificacion en 2 pasos
     // permitir a gmail acceso a aplicaciones poco seguras
-    const transporter = nodemailer.createTransport({
+    const transporter = createTransport({
       host: 'smtp.gmail.com',
       port: 465,
       secure: true,
@@ -32,4 +32,4 @@ const send = async ({ mail, subject = "Muchas gracias por registrarte", message:
   }
 };
 
-module.exports = { send };
+export default { send };

@@ -1,8 +1,8 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
 
-const {all,create,singleUpdate,update,del}= require("../../controllers/admin/categoriasProd");
+import { all, create, singleUpdate, update, del } from "../../controllers/admin/categoriasProd";
 
 
 router.get("/", all);
@@ -13,4 +13,4 @@ router.post("/create", create);
 router.get("/singleUpdate/:id", singleUpdate);
 router.post("/update/:id", update);
 
-module.exports = router;
+export default router;

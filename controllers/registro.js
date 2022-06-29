@@ -1,5 +1,6 @@
-const {register} = require("./../services/registro");
-const model = require('./../models/usuarios');
+import default from "./../services/registro";
+const { register } = default;
+import model from './../models/usuarios';
 // const registroUsuario=false;
 
 const create = async (req, res) => {
@@ -43,4 +44,4 @@ const create = async (req, res) => {
     
   };
 
-  module.exports = {create,verifyEmail};
+  export default {create,verifyEmail};

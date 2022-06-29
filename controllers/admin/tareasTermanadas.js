@@ -1,8 +1,8 @@
-const model = require ("../../models/tareasTerminadas");
+import { get, create, del } from "../../models/tareasTerminadas";
 
 const allTerminada = async (req, res) => {
     try {
-      const listaTerminada = await model.get(); // [{}]
+      const listaTerminada = await get(); // [{}]
   
      
       res.json(listaTerminada);
@@ -15,8 +15,7 @@ const allTerminada = async (req, res) => {
   };
 
   const createTerminada = async (req, res) => {
-    model
-    .create(req.body)
+    create(req.body)
     .then((resultado) => console.log("se creo exitosamente"))
     .catch((e) => console.log(e));
     
@@ -29,7 +28,7 @@ const allTerminada = async (req, res) => {
   const delTerminada = async (req, res) => {
     try {
       const { id } = req.params;
-      await model.del(id);
+      await del(id);
   
       res.json({
         estado: "succes",
@@ -40,4 +39,4 @@ const allTerminada = async (req, res) => {
     }
   };
 
-  module.exports={createTerminada,delTerminada,allTerminada};
+  export default{createTerminada,delTerminada,allTerminada};

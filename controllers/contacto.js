@@ -1,4 +1,5 @@
-const { send } = require("./../services/mail");
+import default from "./../services/mail";
+const { send } = default;
 const mail = "msmdesarrolloinformatico@gmail.com";
 
 const sendEmail = async (req, res) => {
@@ -38,4 +39,4 @@ const sendEmail = async (req, res) => {
     console.log(error);
   }
 };
-module.exports = { sendEmail };
+export default { sendEmail };

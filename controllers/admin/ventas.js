@@ -1,4 +1,4 @@
-const model = require("./../../models/ventas");
+import model from "./../../models/ventas";
 //const { get: getProductos } = require("./../../models/productos");
 
 const all = async (req, res) => {
@@ -36,4 +36,4 @@ const del = (req, res) => {
   // res.redirect("/admin/ventas/all");
 };
 
-module.exports = { all,single,create,del};
+export default { all,single,create,del};

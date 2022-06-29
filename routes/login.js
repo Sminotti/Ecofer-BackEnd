@@ -1,10 +1,10 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
 
 var getIP = require('ipware')().get_ip;
-const { validateLogin } = require("./../middlewares/usuarios");
-const {login} = require("../controllers/login");
+import { validateLogin } from "./../middlewares/usuarios";
+import { login } from "../controllers/login";
 
 // req.cookie
 router.get("/", async (req, res, next) => {
@@ -16,4 +16,4 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", validateLogin, login);
 
-module.exports = router;
+export default router;

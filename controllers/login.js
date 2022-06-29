@@ -1,10 +1,12 @@
-const sha1 = require("sha1");
+import sha1 from "sha1";
 
-const { token } = require("../services/token");
+import default from "../services/token";
+const { token } = default;
 
-const { auth } = require("./../models/login");
+import _default from "./../models/login";
+const { auth } = _default;
 
-const { dbFirebase } = require("./../utils/firebase");
+import { dbFirebase } from "./../utils/firebase";
 
 const login = async (req, res) => {
   try {
@@ -52,4 +54,4 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { login };
+export default { login };

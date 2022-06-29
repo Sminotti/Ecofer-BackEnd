@@ -1,10 +1,10 @@
-var express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const {all} = require("../controllers/admin/usuarios");
+import { all } from "../controllers/admin/usuarios";
 //const {index} = require("../controllers/index");
 
 //router.get("/",index);
 router.get("/",all);
-module.exports = router;
+export default router;
  

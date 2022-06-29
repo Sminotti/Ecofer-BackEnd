@@ -1,10 +1,5 @@
-const {
-  create,
-  createImages,
-  update,
-  updateImage,
-} = require("../models/productos");
-const cloudinary = require("cloudinary").v2;
+import { create, createImages, update, updateImage } from "../models/productos";
+import { v2 as cloudinary } from "cloudinary";
 
 const createProducto = async (body, file, path) => {
   cloudinary.config({
@@ -97,5 +92,5 @@ borrarImagenAnterior = body.idCloudinary;
   }
 };
 
-module.exports = { createProducto, actualizarProducto };
+export default { createProducto, actualizarProducto };
 

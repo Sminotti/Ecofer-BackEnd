@@ -1,6 +1,6 @@
 // middleware comprobacion del schema
 // Entidad
-const { schemas } = require("./../schemas/usuarios");
+import { schemas } from "./../schemas/usuarios";
 
 const validateLogin = (req, res, next) => {
   const { error, value } = schemas.auth.validate(req.body); // error, value
@@ -8,4 +8,4 @@ const validateLogin = (req, res, next) => {
   error ? res.status(422).json({ error: error.details[0].message }) : next();
 };
 
-module.exports = { validateLogin };
+export default { validateLogin };

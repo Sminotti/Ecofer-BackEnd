@@ -1,4 +1,4 @@
-const model = require("../../models/proveedores");
+import model from "../../models/proveedores";
 
 
 const all = async (req, res) => {
@@ -57,4 +57,4 @@ const del = async (req, res) => {
   }
 };
 
-module.exports = { all,single,singleUpdate,update,create,del};
+export default { all,single,singleUpdate,update,create,del};

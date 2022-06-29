@@ -1,4 +1,4 @@
-const { sign, verify } = require("jsonwebtoken");
+import { sign, verify } from "jsonwebtoken";
 
 const token = {
   getJwtToken: (paylod) => {
@@ -30,5 +30,5 @@ const token = {
   },
 };
 
-module.exports = { token };
+export default { token };
 

@@ -1,4 +1,5 @@
-const { token } = require("../services/token");
+import { token } from "../services/token";
+
 
 const auth = (req, res, next) => {
   let userToken = req.get("x-token") || req.headers["autorization"];
@@ -16,4 +17,4 @@ const auth = (req, res, next) => {
   }
 };
 
-module.exports = { auth };
+export default { auth };

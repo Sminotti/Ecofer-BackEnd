@@ -1,4 +1,4 @@
-const model = require("../../models/tareas");
+import model from "../../models/tareas";
 
 const allTarea = async (req, res) => {
   try {
@@ -39,4 +39,4 @@ const delTarea = async (req, res) => {
 };
 
 
-module.exports={allTarea,createTarea,delTarea};
+export default{allTarea,createTarea,delTarea};

@@ -1,11 +1,11 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const multer = require("multer"); // agrega al req ( el file para poder subir archivos) req.file
+import multer from "multer"; // agrega al req ( el file para poder subir archivos) req.file
 const config = { dest: `./public/tmp` };//creo una variable con el destino temporal
 const upload = multer(config);
 
-const {all,single,create,singleUpdate,update,del}= require("../../controllers/admin/productos");
+import { all, single, create, singleUpdate, update, del } from "../../controllers/admin/productos";
 
 
 
@@ -22,5 +22,5 @@ router.post("/create", upload.single("uid"), create); // aca tendria que recibir
  router.post("/update/:id",  upload.single("uid"), update);
 
 
-module.exports = router;
+export default router;
  

@@ -5,4 +5,4 @@ const faqs = (req, res, next) => {
 };
 
 
-module.exports = { faqs };
+export default { faqs };

@@ -1,6 +1,6 @@
 
-const { create, createImages} = require("../models/proveedores");
-const { imgFile } = require("../utils/fileHandler");
+import { create, createImages } from "../models/proveedores";
+import { imgFile } from "../utils/fileHandler";
 
 const createProveedores = async (body, file) => {
   try {
@@ -15,4 +15,4 @@ const createProveedores = async (body, file) => {
 };
 
 
-module.exports = { createProveedores };
+export default { createProveedores };

@@ -1,7 +1,7 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const {allTarea,createTarea,delTarea}= require("../../controllers/admin/tareas");
+import { allTarea, createTarea, delTarea } from "../../controllers/admin/tareas";
 
 router.get("/", allTarea);
 
@@ -9,4 +9,4 @@ router.post("/create", createTarea);
 
 router.get("/del/:id", delTarea);
 
-module.exports = router;
+export default router;

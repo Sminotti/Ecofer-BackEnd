@@ -1,10 +1,13 @@
-const model = require("../../models/productos");
-const { get: getImgProductos } = require("../../models/prodimagenes");
-const { get: getProveedores } = require("../../models/proveedores");
-const { get: getCategorias } = require("../../models/categoriasProd");
-const service = require("../../services/productos");
+import model from "../../models/productos";
+import default from "../../models/prodimagenes";
+const { get: getImgProductos } = default;
+import _default from "../../models/proveedores";
+const { get: getProveedores } = _default;
+import __default from "../../models/categoriasProd";
+const { get: getCategorias } = __default;
+import service from "../../services/productos";
 
-const { response } = require("express");
+import { response } from "express";
 // const adminProducto=false;
 
 const all = async (req, res) => {
@@ -99,4 +102,4 @@ const update = async (req, res) => {
   });
 };
 
-module.exports = { all, single, create, singleUpdate, update, del };
+export default { all, single, create, singleUpdate, update, del };

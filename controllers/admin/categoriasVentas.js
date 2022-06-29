@@ -1,4 +1,4 @@
-const model = require("../../models/categoriasVentas");
+import model from "../../models/categoriasVentas";
 
 const all = async (req, res) => {
   console.log(req.params);
@@ -27,4 +27,4 @@ const del = async (req, res) => {
   }
 };
 
-module.exports = { all,create,del};
+export default { all,create,del};
