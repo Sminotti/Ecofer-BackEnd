@@ -1,5 +1,4 @@
 import sha1 from "sha1";
-
 import  token  from "../services/token.js";
 import { auth } from "./../models/login.js";
 import { dbFirebase } from "./../utils/firebase.js";
