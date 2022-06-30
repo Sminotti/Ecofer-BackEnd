@@ -1,16 +1,16 @@
-import model from "../../models/clientes.js";
-import { getImgClientes } from "../../models/cliimagenes.js";
-import { getEmpresas } from "../../models/empresas.js";
-import { getPersonas } from "../../models/personas.js";
+import { get as getClientes, single as singleClientes, del as delClientes, update as updateClientes } from "../../models/clientes.js";
+import { get as getImgClientes, single as singleCliImag } from "../../models/cliimagenes.js";
+import { get as getEmpresas, single as singleEmpresas } from "../../models/empresas.js";
+import { get as getPersonas, single as singlePersonas } from "../../models/personas.js";
 
 const all = async (req, res) => {
   try {
-    const clientes = await model.get(); // [{}]
+    const clientes = await getClientes(); // [{}]
     const imgClientes = await getImgClientes(); // [{}]
     const empresas = await getEmpresas(); // [{}]
     const personas = await getPersonas(); // [{}]
-     //res.json(clientes, imgclientes, empresas, personas);
-    res.render("adminClientes", { clientes, imgClientes, empresas, personas });
+
+    res.json(clientes, imgClientes, empresas, personas);
   } catch (error) {
     console.log(error);
   }
@@ -18,43 +18,43 @@ const all = async (req, res) => {
 
 const single = async (req, res) => {
   try {
-   
+
     const { id } = req.params;
-    const [imgCliente] = await model.single(id);
-    const [cliente] = await model.single(id);
-    const [persona] = await model.single(id);
-    const [empresa] = await model.single(id);
-    //res.json(cliente, imgcliente, empresa, imgEmpresa);
-    res.render("adminCliente", { cliente, imgCliente, empresa, persona });
+    const [imgCliente] = await singleCliImag(id);
+    const [cliente] = await singleClientes(id);
+    const [persona] = await singlePersonas(id);
+    const [empresa] = await singleEmpresas(id);
+
+    res.json(cliente, imgCliente, empresa, persona);
   } catch (error) {
     console.log(error);
   }
 };
 
 const create = async (req, res) => {
-  
+
   const idFile = await service.createCliente(req.body, req.file);
-  res.redirect("/admin/clientes/all");
+  //res.redirect("/admin/clientes/all");
 };
 
 const del = async (req, res) => {
   try {
     const { id } = req.params;
-    await model.del(id);
-    res.redirect("/admin/clientes/all");
+    await delClientes(id);
+
   } catch (error) {
     console.log(error);
   }
 };
 
 const singleUpdate = async (req, res) => {
-  try{
-    
+  try {
+
     const { id } = req.params;
-    const [updateImgCliente] = await model.single(id);
-    const [updateCliente] = await model.single(id);
-    const [updatePersona] = await model.single(id);
-    const [updateEmpresa] = await model.single(id);
+    const [updateImgCliente] = await singleCliImag(id);
+    const [updateCliente] = await singleClientes(id);
+    const [updatePersona] = await singlePersonas(id);
+    const [updateEmpresa] = await singleEmpresas(id);
     //res.json(updateImgCliente, updateCliente, updatePersona, updateEmpresa);
     res.render("adminUpdateProducto", { updateImgCliente, updateCliente, updatePersona, updateEmpresa });
   } catch (error) {
@@ -63,13 +63,11 @@ const singleUpdate = async (req, res) => {
 };
 
 
-const update = async (req, res) =>{
-  model
-    .update(req.body, req.params.id)
-    .then((resultado) => res.redirect("/admin/clientes/all"))
+const update = async (req, res) => {
+  updateClientes(req.body, req.params.id)
+    .then((resultado) => console.log("Se actualizo correctamente") )
     .catch((e) => console.log(error));
-    
 };
 
 
-export default { all,create,del,singleUpdate,single,update};
+export { all, create, del, singleUpdate, single, update };

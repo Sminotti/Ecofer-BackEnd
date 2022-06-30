@@ -1,8 +1,8 @@
-import model from "../../models/tareas.js";
+import {get,create as createTareas,del as delTareas} from "../../models/tareas.js";
 
 const allTarea = async (req, res) => {
   try {
-    const listaTareas = await model.get(); // [{}]
+    const listaTareas = await get(); // [{}]
  
     res.json(listaTareas);
   } catch (error) {
@@ -11,8 +11,7 @@ const allTarea = async (req, res) => {
 };
 
 const createTarea = async (req, res) => {
-  model
-    .create(req.body)
+  createTareas(req.body)
     .then((resultado) => console.log("Tarea creada exitosamente",resultado))
     .catch((e) => console.log(e));
 
@@ -27,7 +26,7 @@ const createTarea = async (req, res) => {
 const delTarea = async (req, res) => {
   try {
     const { id } = req.params;
-    await model.del(id);
+    await delTareas(id);
 
     res.json({
       estado: "succes",
@@ -39,4 +38,4 @@ const delTarea = async (req, res) => {
 };
 
 
-export default{allTarea,createTarea,delTarea};
+export {allTarea,createTarea,delTarea};

@@ -1,10 +1,12 @@
-const Joi = require("@hapi/joi");
+
+import pkg from '@hapi/joi';
+const { object, string } = pkg;
 
 const schemas = {
-  auth: Joi.object().keys({
-    usuario: Joi.string().min(4).max(20).required(),
-    password: Joi.string().min(4).max(20).required(),
+  auth: pkg.object().keys({
+    usuario: pkg.string().min(4).max(20).required(),
+    password: pkg.string().min(4).max(20).required(),
   }),
 };
 
-module.exports = { schemas };
+export { schemas };

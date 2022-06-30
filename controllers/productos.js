@@ -1,13 +1,13 @@
-import model from "./../models/productos.js";
-import { getImgProductos, imgSingle } from "./../models/prodimagenes.js";
-import { getProveedores } from "./../models/proveedores.js";
-import { getCategorias } from "./../models/categoriasProd.js";
+import { get as getProductos} from "./../models/productos.js";
+import { get as getImgProductos, single as imgSingle } from "./../models/prodimagenes.js";
+import { get as getProveedores } from "./../models/proveedores.js";
+import { get as getCategorias } from "./../models/categoriasProd.js";
 
 const all = async (req, res) => {
   try {
     console.log(req.params);
     const imgProductos = await getImgProductos();
-    const productos = await model.get();
+    const productos = await getProductos();
     const proveedores = await getProveedores();
     const categoriasProd = await getCategorias();
     res.json(productos, imgProductos, proveedores, categoriasProd);
@@ -35,10 +35,10 @@ const filtrarProductos = async (req, res) => {
     const { categoria } = req.params;
     const productos = await model.filtrarProductos(categoria);
     const categoriasProd = await getCategorias();
-    res.json(productos);
+    res.json(productos, categoriasProd);
   } catch (e) {
     console.log(e);
   }
 };
 
-export default { all, single, filtrarProductos };
+export { all, single, filtrarProductos };

@@ -78,4 +78,4 @@ const register = async (body, file,path) => {
   }
 };
 
-export default { register };
+export { register };

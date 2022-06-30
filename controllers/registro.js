@@ -1,6 +1,6 @@
 import { register } from "./../services/registro.js";
 
-import model from './../models/usuarios.js';
+import {update as updateUsuario } from './../models/usuarios.js';
 // const registroUsuario=false;
 
 const create = async (req, res) => {
@@ -27,7 +27,7 @@ const create = async (req, res) => {
     try {
       console.log("verify",req.query);
       const {linkUnico} = req.query;
-      await model.update({linkUnico,data:{habilitado: 1}})
+      await updateUsuario({linkUnico,data:{habilitado: 1}})
       res.json({
         estado: "succes",
         message:"usuario habilitado",
@@ -44,4 +44,4 @@ const create = async (req, res) => {
     
   };
 
-  export default {create,verifyEmail};
+  export {create,verifyEmail};

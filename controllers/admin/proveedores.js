@@ -1,60 +1,45 @@
-import model from "../../models/proveedores.js";
-
+import { get, del as delProv, create as createProv, update as updateProv } from "../../models/proveedores.js";
 
 const all = async (req, res) => {
-  console.log("se muestra" )
   try {
-    const proveedores = await model.get(); // [{}]
+    const proveedores = await get(); // [{}]
     res.json(proveedores);
-    //res.render("adminProveedores", {proveedores});
   } catch (e) {
-    // res.render("error");
     console.log(e)
   }
 };
 
 const single = async (req, res) => {
   const { id } = req.params;
-  const [proveedor] = await model.get(id); // [{}]
+  const [proveedor] = await get(id); // [{}]
   res.json(proveedor);
-  //res.render("adminProveedor", { proveedor });
 };
 
 const create = async (req, res) =>
-  model
-    .create(req.body)
+  createProv(req.body)
     .then((resultado) => console.log("se creo exitosamente"))
     .catch((e) => console.log(e));
 
-// const create = async (req, res) => {
-//     const idFile = await service.createProveedores(req.body, req.file);
-//     res.redirect("/admin/proveedores/all");
-// };
-
 const singleUpdate = async (req, res) => {
-    const { id } = req.params;
-    const [updateProveedor] = await model.single(id);
-    res.json(updateProveedor);
-    //res.render("adminUpdateProveedor", { updateProveedor });
+  const { id } = req.params;
+  const [updateProveedor] = await single(id);
+  res.json(updateProveedor);
 };
 
-const update = async (req, res) =>{
-  model
-    .update(req.body, req.params.id)
+const update = async (req, res) => {
+  updateProv(req.body, req.params.id)
     .then((resultado) => console.log("se actualizo correctamente"))
     .catch((e) => console.log(e));
-    console.log(req.body)
+  console.log(req.body)
 };
 
 const del = async (req, res) => {
   try {
     const { id } = req.params;
-    await model.del(id);
-    // res.redirect("/admin/proveedores/all");
+    await delProv(id);
   } catch (error) {
-    // res.render("error");
     console.log(error);
   }
 };
 
-export default { all,single,singleUpdate,update,create,del};
+export { all, single, singleUpdate, update, create, del };

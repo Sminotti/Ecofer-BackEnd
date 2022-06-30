@@ -22,4 +22,4 @@ pool.query("INSERT INTO ?? SET ?", [T_USUARIOS_IMAGES, obj])
     .catch((e) => e);
 
 
-export default { create, createImages, get };
+export { create, createImages, get };

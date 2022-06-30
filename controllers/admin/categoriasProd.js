@@ -1,8 +1,8 @@
-import model from "../../models/categoriasProd.js";
+import { create as createCatProd, single, update as updateCatProd, del as delCatProd} from "../../models/categoriasProd.js";
 
 const all = async (req, res) => {
   try {
-    const categoriasProd = await model.get(); // [{}]
+    const categoriasProd = await get(); // [{}]
     res.json(categoriasProd);
   } catch (e) {
     console.log(e);
@@ -10,15 +10,15 @@ const all = async (req, res) => {
 };
 
 const create = async (req, res) =>
-  model
-    .create(req.body)
+  
+createCatProd(req.body)
     .then((resultado) => console.log("se creo exitosamente"))
     .catch((e) => console.log(e));
 
 const del = async (req, res) => {
   try {
     const { id } = req.params;
-    await model.del(id);
+    await delCatProd(id);
 
     console.log("eliminado exitosamente");
   } catch (error) {
@@ -28,16 +28,16 @@ const del = async (req, res) => {
 
 const singleUpdate = async (req, res) => {
   const { id } = req.params;
-  const [updateCat] = await model.single(id);
+  const [updateCat] = await single(id);
   res.json(updateCat);
 };
 
 const update = async (req, res) => {
-  model
-    .update(req.body, req.params.id)
+  
+  updateCatProd(req.body, req.params.id)
     .then((resultado) => console.log("se actualizo exitosamente"))
     .catch((e) => console.log(e));
   console.log(req.body);
 };
 
-export default { all, create, singleUpdate, update, del };
+export { all, create, singleUpdate, update, del };

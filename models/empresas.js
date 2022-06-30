@@ -30,4 +30,4 @@ const del = (id) =>
     .then((response) => response)
     .catch((e) => e);
 
-export default { get, single, create, del };
+export { get, single, create, del };

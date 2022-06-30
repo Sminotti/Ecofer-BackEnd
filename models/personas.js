@@ -24,4 +24,4 @@ pool.query("UPDATE SET ?? SET habilitado = 0, eleminado = 1 where id = ?", [
     .then((response) => response)
     .catch((e) => e);
 
-export default { get, single, create, del };
+export { get, single, create, del };

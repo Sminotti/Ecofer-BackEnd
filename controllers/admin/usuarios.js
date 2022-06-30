@@ -1,4 +1,4 @@
-import model from "../../models/usuarios.js";
+import { get as getUsuarios, single as singleUsuarios } from "../../models/usuarios.js";
 import { get as getEmpresas } from "../../models/empresas.js";
 
 import { get as getPersonas } from "../../models/personas.js";
@@ -9,7 +9,7 @@ import { get as getImgUsuarios } from "../../models/usuariosimagen.js";
 const all = async (req, res) => {
   try {
     console.log(req.params);
-    const usuarios = await model.get(); // [{}]
+    const usuarios = await getUsuarios(); // [{}]
     const imgUsuarios = await getImgUsuarios(); // [{}]
     const empresas= await getEmpresas();
     const personas= await getPersonas();
@@ -23,7 +23,7 @@ const all = async (req, res) => {
 const single = async (req, res) => {
   try {
     const { id } = req.params;
-    const [usuario] = await model.single(id);
+    const [usuario] = await singleUsuarios(id);
     const [persona] = await model.single(id); // [{}]
     const [empresa] = await model.single(id); // [{}]
     const [imgUsuario] = await model.single(id);
@@ -36,4 +36,4 @@ const single = async (req, res) => {
   }
 };
 
-export default { all,single};
+export { all,single};

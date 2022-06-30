@@ -1,4 +1,3 @@
-import { response } from "express";
 import pool from "../utils/bd.js";
 const T_USUARIOS = "usuarios";
 const T_USUARIOS_IMAGES = "usuariosimagen";
@@ -38,4 +37,4 @@ pool.query("UPDATE ?? SET ? WHERE confirmacionCorreo = ? OR id = ?",
     .then((result) => result)
     .catch((e) => e);
 
-export default { create, createImages, get, single, update };
+export { create, createImages, get, single, update };

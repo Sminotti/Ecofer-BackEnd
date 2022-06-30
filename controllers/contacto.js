@@ -38,4 +38,4 @@ const sendEmail = async (req, res) => {
     console.log(error);
   }
 };
-export default { sendEmail };
+export { sendEmail };

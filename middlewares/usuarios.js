@@ -8,4 +8,4 @@ const validateLogin = (req, res, next) => {
   error ? res.status(422).json({ error: error.details[0].message }) : next();
 };
 
-export default { validateLogin };
+export { validateLogin };

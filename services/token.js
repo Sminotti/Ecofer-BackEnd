@@ -16,19 +16,19 @@ const token = {
   comprobarToken: (token) => {
     const seed = process.env.SEED;
     jwt.verify(token, seed, (err, decoded) => {
- 
+
       if (err) {
         console.log("error: ", err);
         return res.json({
-          mesaage:'el token no es valido'
+          mesaage: 'el token no es valido'
         });
       } else {
-       
+
         console.log("decode valido", decoded);
       }
     });
   },
 };
 
-export default { token,comprobarToken };
+export default { token };
 

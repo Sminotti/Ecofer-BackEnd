@@ -32,4 +32,4 @@ const send = async ({ mail, subject = "Muchas gracias por registrarte", message:
   }
 };
 
-export default { send };
+export { send };

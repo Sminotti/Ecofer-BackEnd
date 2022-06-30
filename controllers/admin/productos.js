@@ -1,15 +1,12 @@
-import model from "../../models/productos.js";
-import { getImgProductos } from "../../models/prodimagenes.js";
-import { getProveedores } from "../../models/proveedores.js";
-import { getCategorias } from "../../models/categoriasProd.js";
+import { get as getProductos, del as delProductos, single as singleProductos } from "../../models/productos.js";
+import { get as getImgProductos, single as singlePordImg } from "../../models/prodimagenes.js";
+import { get as getProveedores, single as singleProv } from "../../models/proveedores.js";
+import { get as getCategorias, single as singleCatProd } from "../../models/categoriasProd.js";
 import service from "../../services/productos.js";
-
-import { response } from "express";
-// const adminProducto=false;
 
 const all = async (req, res) => {
   try {
-    const productos = await model.get(); // [{}]
+    const productos = await getProductos(); // [{}]
     const imgProductos = await getImgProductos(); // [{}]
     const proveedores = await getProveedores(); // [{}]
     const categoriasProd = await getCategorias(); // [{}]
@@ -22,10 +19,10 @@ const all = async (req, res) => {
 const single = async (req, res) => {
   try {
     const { id } = req.params;
-    const [imgProducto] = await model.single(id);
-    const [producto] = await model.single(id);
-    const [proveedor] = await model.single(id);
-    const [categoriaProd] = await model.single(id);
+    const [imgProducto] = await singlePordImg(id);
+    const [producto] = await singleProductos(id);
+    const [proveedor] = await singleProv(id);
+    const [categoriaProd] = await singleCatProd(id);
     res.json(producto, imgProducto, proveedor, categoriaProd);
   } catch (error) {
     console.log("error single:", error);
@@ -46,14 +43,14 @@ const create = async (req, res) => {
     estado: "succes",
     message: "Producto creado exitosamente",
   });
-  // adminProducto=true;
+
 };
 
 const del = async (req, res) => {
   try {
-    // adminProducto=true;
+
     const { id } = req.params;
-    await model.del(id);
+    await delProductos(id);
 
     res.json({
       estado: "succes",
@@ -67,10 +64,10 @@ const del = async (req, res) => {
 const singleUpdate = async (req, res) => {
   try {
     const { id } = req.params;
-    const [updateImgProducto] = await model.single(id);
-    const [updateProducto] = await model.single(id);
-    const [updateProveedor] = await model.single(id);
-    const [updateCategoriaProd] = await model.single(id);
+    const [updateImgProducto] = await singlePordImg(id);
+    const [updateProducto] = await singleProductos(id);
+    const [updateProveedor] = await singleProv(id);
+    const [updateCategoriaProd] = await singleCatProd(id);
     res.json(
       updateProducto,
       updateImgProducto,
@@ -99,4 +96,4 @@ const update = async (req, res) => {
   });
 };
 
-export default { all, single, create, singleUpdate, update, del };
+export { all, single, create, singleUpdate, update, del };
