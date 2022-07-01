@@ -1,3 +1,4 @@
+
 import sha1 from "sha1";
 import  token  from "../services/token.js";
 import { auth } from "./../models/login.js";
@@ -49,4 +50,4 @@ const login = async (req, res) => {
   }
 };
 
-export default { login };
+export default  login ;

@@ -9,19 +9,6 @@
 // const { auth } = require("./middlewares/auth");// controlo el login
 // dotenv.config();
 
-
-
-
-import express, { json, urlencoded} from "express";
-import cors from "cors";
-import createError from "http-errors";
-import { join } from "path";
-import cookieParser from "cookie-parser";
-import logger from "morgan";
-import { config } from "dotenv";
-import { auth } from "./middlewares/auth.js";// controlo el login
-config();
-
 // mercado pago
 // SDK de Mercado Pago
 // const mercadopago = require("mercadopago");
@@ -30,6 +17,17 @@ config();
 // mercadopago.configure({
 //   access_token: process.env.ACCES_TOKEN,
 // });
+
+import express, { json, urlencoded} from "express";
+import { fileURLToPath } from "url";
+import { dirname, join} from "path";
+import cors from "cors";
+import createError from "http-errors";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import { config } from "dotenv";
+import { auth } from "./middlewares/auth.js";// controlo el login
+config();
 
 // guardo en una variable la ruta de los archivos a cargar cuando acceda a la url
 import session from "express-session";
@@ -51,7 +49,8 @@ import adminProveedores from "./routes/admin/proveedores.js";
 import adminClientes from "./routes/admin/clientes.js";
 import adminTareas from "./routes/admin/tareas.js";
 
-var app = express();
+const app = express();
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(logger("dev"));
 app.use(json());
@@ -105,8 +104,7 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   // res.render("error");
- 
-  console.log("aca va el error que viene del manejador de errores del app.js");
+console.log("error app",err);
 });
 
 export default app;
