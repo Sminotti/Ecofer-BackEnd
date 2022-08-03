@@ -60,6 +60,7 @@ app.use(express.static(join(__dirname, "public")));
 console.log("ver ruta:",__dirname);
 app.use(cors());
 
+
 // crea un objeto session dentro del req. req.session
 app.use(
   session({
