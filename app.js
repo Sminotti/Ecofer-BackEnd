@@ -21,7 +21,8 @@
 import express, { json, urlencoded} from "express";
 import { fileURLToPath } from "url";
 import { dirname, join} from "path";
-import cors from "cors";
+// const cors = require("cors");
+import cors from 'cors';
 import createError from "http-errors";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
@@ -53,13 +54,13 @@ const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(logger("dev"));
-app.use(json());
 app.use(urlencoded({ extended: false }));// aca le decimos a mode que entienda que son los datos del form
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public")));
 console.log("ver ruta:",__dirname);
 app.use(cors());
-
+//app.use(cors());
+app.use(json());
 
 // crea un objeto session dentro del req. req.session
 app.use(
