@@ -9,8 +9,8 @@ class Rectangulo {
     
   }
 }
-
-rectangulo = new Rectangulo(
+// cambien de rectangulo con "r" minuscula a "R" mayuscula
+Rectangulo = new Rectangulo(
   () => {
     console.log("resolver");
   },
@@ -19,4 +19,6 @@ rectangulo = new Rectangulo(
   }
 );
 // console.log(rectangulo.resolve);
- console.log("que es esto:",rectangulo.then());
+ console.log("que es esto:",Rectangulo.then());
+
+ // 

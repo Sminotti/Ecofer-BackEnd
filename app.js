@@ -57,7 +57,6 @@ app.use(logger("dev"));
 app.use(urlencoded({ extended: false }));// aca le decimos a mode que entienda que son los datos del form
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public")));
-console.log("ver ruta:",__dirname);
 app.use(cors());
 //app.use(cors());
 app.use(json());
