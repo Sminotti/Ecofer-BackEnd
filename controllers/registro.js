@@ -4,8 +4,8 @@ import {update as updateUsuario } from './../models/usuarios.js';
 // const registroUsuario=false;
 
 const create = async (req, res) => {
-  console.log("veo el req.body:",req.body);
-  console.log("veo el req:",req);
+  console.log("veo los datos del registro en req.body:",req.body);
+ 
     try {
     
       const idFile = await register(req.body, req.file,req.file.path);

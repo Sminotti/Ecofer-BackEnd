@@ -30,6 +30,9 @@ import { config } from "dotenv";
 import { auth } from "./middlewares/auth.js";// controlo el login
 config();
 
+import { PORT } from "./config.js";
+
+
 // guardo en una variable la ruta de los archivos a cargar cuando acceda a la url
 import session from "express-session";
 import index from "./routes/index.js";
@@ -50,6 +53,7 @@ import adminProveedores from "./routes/admin/proveedores.js";
 import adminClientes from "./routes/admin/clientes.js";
 import adminTareas from "./routes/admin/tareas.js";
 
+// initialization
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -107,5 +111,9 @@ app.use(function (err, req, res, next) {
   // res.render("error");
 console.log("error app",err);
 });
+
+// inicializo server
+app.listen(PORT);
+console.log("server on port ", PORT);
 
 export default app;
