@@ -7,7 +7,7 @@ let pool = createPool({
   password: process.env.DB_PASSWORD || "",
   user: process.env.DB_USER || "root",
   port: process.env.DB_PORT || 3306,
-  database: process.env.DB_NAME || "Ecofer",
+  database: process.env.DB_NAME || "ecofer",
   connectionLimit: 10,
 });
 pool.query = promisify(pool.query);
