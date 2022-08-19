@@ -20,6 +20,7 @@ const send = async ({ mail, subject = "Muchas gracias por registrarte", message:
       },
     });
     const info = {
+      from:process.env.MAIL_USER,
       to: mail,
       subject,
       html,
