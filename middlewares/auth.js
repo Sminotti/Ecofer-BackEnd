@@ -1,4 +1,3 @@
-
 import token from "../services/token.js";
 
 const auth = (req, res, next) => {
@@ -17,4 +16,4 @@ const auth = (req, res, next) => {
   }
 };
 
-export { auth };
+export default auth;

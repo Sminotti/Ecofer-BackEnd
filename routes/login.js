@@ -16,6 +16,6 @@ router.get("/", async (req, res, next) => {
 });
 
 
-router.post("/", validateLogin, login);
+router.post("/", validateLogin,login);
 
 export default router;

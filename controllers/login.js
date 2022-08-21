@@ -1,7 +1,6 @@
-
 import sha1 from "sha1";
-import  token  from "../services/token.js";
-import { auth } from "./../models/login.js";
+import token from "../services/token.js";
+import auth from "./../models/login.js";
 import { dbFirebase } from "./../utils/firebase.js";
 
 const login = async (req, res) => {
@@ -11,18 +10,18 @@ const login = async (req, res) => {
 
     console.log("usuario logueado: ", user); //lo veo por consola//veo el id del usuario almacenada en un array
 
-//--------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------
     // veo los suarios de la base de Firebase
     // me conecto a la tabla/collectio "clientes_login"
     const querySnapshot = await dbFirebase.collection("clientes_login").get();
     // recorro la base y la muestro
     const usuarios = querySnapshot.docs.map((doc) => ({
       id: doc.id,
-     ...doc.data()// muestro todos los datos del registro y no de a uno
+      ...doc.data(), // muestro todos los datos del registro y no de a uno
     }));
 
     console.log("Lista de usuarios Firebase:", usuarios);
-//------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------
 
     // veo si user tiene algo
     user.length === 0 //si la ultima posicion del array es 0,o sea no coincide el usuario y la contraseña...
@@ -30,6 +29,7 @@ const login = async (req, res) => {
       : null; //termina
 
     // creo el token
+
     const userToken = token.getJwtToken({
       user,
     });
@@ -50,4 +50,4 @@ const login = async (req, res) => {
   }
 };
 
-export default  login ;
+export default login;

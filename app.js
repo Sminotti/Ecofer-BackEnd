@@ -27,7 +27,7 @@ import createError from "http-errors";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { config } from "dotenv";
-import { auth } from "./middlewares/auth.js";// controlo el login
+import auth from "./middlewares/auth.js";// controlo el login
 config();
 
 import { PORT } from "./config.js";
