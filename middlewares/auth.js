@@ -2,9 +2,7 @@ import token from "../services/token.js";
 
 const auth = (req, res, next) => {
   let userToken = req.get("x-token") || req.headers["autorization"];
-
   token.comprobarToken(userToken);
-
   try {
     next();
   } catch (error) {
