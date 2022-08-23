@@ -44,8 +44,9 @@ const createProducto = async (body, file, path) => {
 };
 
 const actualizarProducto = async (body, file, idProducto, path) => {
-borrarImagenAnterior = body.idCloudinary;
+
   datosProducto = {
+    //borrarImagenAnterior : body.idCloudinary,
     // id: body.id,
     nombre: body.nombre,
     idCategoria: body.idCategoria,

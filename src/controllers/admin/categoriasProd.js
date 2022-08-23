@@ -1,4 +1,4 @@
-import { create as createCatProd, single, update as updateCatProd, del as delCatProd} from "../../models/categoriasProd.js";
+import { get,create as createCatProd, single, update as updateCatProd, del as delCatProd} from "../../models/categoriasProd.js";
 
 const all = async (req, res) => {
   try {
@@ -12,7 +12,7 @@ const all = async (req, res) => {
 const create = async (req, res) =>
   
 createCatProd(req.body)
-    .then((resultado) => console.log("se creo exitosamente"))
+    .then((resultado) => resultado)
     .catch((e) => console.log(e));
 
 const del = async (req, res) => {
@@ -35,7 +35,7 @@ const singleUpdate = async (req, res) => {
 const update = async (req, res) => {
   
   updateCatProd(req.body, req.params.id)
-    .then((resultado) => console.log("se actualizo exitosamente"))
+    .then((resultado) => resultado)
     .catch((e) => console.log(e));
   console.log(req.body);
 };
