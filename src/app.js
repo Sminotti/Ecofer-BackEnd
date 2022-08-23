@@ -25,13 +25,10 @@ import { dirname, join} from "path";
 import cors from 'cors';
 import createError from "http-errors";
 import cookieParser from "cookie-parser";
-import logger from "morgan";
+import morgan from "morgan";
 import { config } from "dotenv";
 import auth from "./middlewares/auth.js";// controlo el login
 config();
-
-import { PORT } from "./config.js";
-
 
 // guardo en una variable la ruta de los archivos a cargar cuando acceda a la url
 import session from "express-session";
@@ -57,7 +54,7 @@ import adminTareas from "./routes/admin/tareas.js";
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-app.use(logger("dev"));
+app.use(morgan("dev"));
 app.use(urlencoded({ extended: false }));// aca le decimos a mode que entienda que son los datos del form
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public")));
@@ -112,8 +109,6 @@ app.use(function (err, req, res, next) {
 console.log("error app",err);
 });
 
-// inicializo server
-app.listen(PORT);
-console.log("server on port ", PORT);
+
 
 export default app;
