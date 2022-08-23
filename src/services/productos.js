@@ -43,20 +43,20 @@ const createProducto = async (body, file, path) => {
   }
 };
 
-const actualizarProducto = async (body, file, idProducto, path) => {
+const actualizarProducto = async (datosProducto, file, idProducto, path) => {
 
   datosProducto = {
-    //borrarImagenAnterior : body.idCloudinary,
+    //borrarImagenAnterior : datosProducto.idCloudinary,
     // id: body.id,
-    nombre: body.nombre,
-    idCategoria: body.idCategoria,
-    IdProveedor: body.idProveedor,
-    kilos: body.kilos,
-    numeroSerie: body.numeroSerie,
-    observacionesProd: body.observacionesProd,
-    precioVenta: body.precioVenta,
-    precioCosto: body.precioCosto,
-    unidades: body.unidades,
+    nombre: datosProducto.nombre,
+    idCategoria: datosProducto.idCategoria,
+    IdProveedor: datosProducto.idProveedor,
+    kilos: datosProducto.kilos,
+    numeroSerie: datosProducto.numeroSerie,
+    observacionesProd: datosProducto.observacionesProd,
+    precioVenta: datosProducto.precioVenta,
+    precioCosto: datosProducto.precioCosto,
+    unidades: datosProducto.unidades,
   };
 
   try {
