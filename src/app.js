@@ -1,4 +1,3 @@
-
 // const cors = require("cors");
 // const createError = require("http-errors");
 // const express = require("express");
@@ -18,16 +17,16 @@
 //   access_token: process.env.ACCES_TOKEN,
 // });
 
-import express, { json, urlencoded} from "express";
+import express, { json, urlencoded } from "express";
 import { fileURLToPath } from "url";
-import { dirname, join} from "path";
+import { dirname, join } from "path";
 // const cors = require("cors");
-import cors from 'cors';
+import cors from "cors";
 import createError from "http-errors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import { config } from "dotenv";
-import auth from "./middlewares/auth.js";// controlo el login
+import auth from "./middlewares/auth.js"; // controlo el login
 config();
 
 // guardo en una variable la ruta de los archivos a cargar cuando acceda a la url
@@ -55,7 +54,7 @@ const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(morgan("dev"));
-app.use(urlencoded({ extended: false }));// aca le decimos a mode que entienda que son los datos del form
+app.use(urlencoded({ extended: false })); // aca le decimos a mode que entienda que son los datos del form
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public")));
 app.use(cors());
@@ -86,12 +85,12 @@ app.use("/about", about);
 // Administrador
 app.use("/admin/categoriasProd", auth, adminCategoriasProd);
 app.use("/admin/categoriasVentas", auth, adminCategoriasVentas);
-app.use("/admin/productos", auth,adminProductos);
+app.use("/admin/productos", auth, adminProductos);
 app.use("/admin/ventas", auth, adminVentas);
 app.use("/admin/usuarios", auth, adminUsuarios);
 app.use("/admin/proveedores", auth, adminProveedores);
 app.use("/admin/clientes", auth, adminClientes);
-app.use("/admin/tareas",auth,adminTareas);
+app.use("/admin/tareas", auth, adminTareas);
 
 app.use(function (req, res, next) {
   next(createError(404));
@@ -106,9 +105,7 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   // res.render("error");
-console.log("error app",err);
+  console.log("error app", err);
 });
-
-
 
 export default app;

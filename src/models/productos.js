@@ -62,7 +62,7 @@ const update = (obj, id) =>
 
 const updateImage = (obj, id) =>
   pool.query("UPDATE ?? SET ? where productosimagen.idProductos = ?", [T_PRODUCTOS_IMAGENES, obj, id])
-    .then((response) => response)
+    .then((response) => console.log("response actualizar imagen",response))
     .catch((e) => console.log(e));
 
 export {
