@@ -10,7 +10,7 @@ import { all, single, singleUpdate, update, create, del } from "../../controller
 
 router.get("/", all);
 router.get("/del/:id", del);
-router.get("/single/:id", single);
+// router.get("/single/:id", singleUpdate);
 
 router.get("/create", (req, res) => console.log("proveedor creado exitosamente"));
 router.post("/create", upload.single("uid"), create); 
