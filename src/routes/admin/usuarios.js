@@ -3,7 +3,7 @@ const router = Router();
 
 import { all, single } from "../../controllers/admin/usuarios.js";
 
-router.get("/single/:id", single);
 router.get("/", all);
+router.get("/single/:id", single);
 
 export default router;

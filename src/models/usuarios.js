@@ -3,6 +3,7 @@ const T_USUARIOS = "usuarios";
 const T_USUARIOS_IMAGES = "usuariosimagen";
 const T_EMPRESAS = "empresas";
 const T_PERSONAS = "personas";
+const T_ROLES = "roles"; 
 
 const get = () =>
 pool.query(
@@ -37,4 +38,10 @@ pool.query("UPDATE ?? SET ? WHERE confirmacionCorreo = ? OR id = ?",
     .then((result) => result)
     .catch((e) => e);
 
-export { create, createImages, get, single, update };
+const updateRole=(obj,id) =>
+pool.query("UPDATE ?? JOIN ?? ON usuario.role = roles.id SET ? WHERE ?",
+[T_USUARIOS,T_ROLES,obj,id]
+
+)
+
+export { create, createImages, get, single, update, updateRole };

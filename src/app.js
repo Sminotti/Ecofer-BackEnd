@@ -1,13 +1,3 @@
-// const cors = require("cors");
-// const createError = require("http-errors");
-// const express = require("express");
-// const path = require("path");
-// const cookieParser = require("cookie-parser");
-// const logger = require("morgan");
-// const dotenv = require("dotenv");
-// const { auth } = require("./middlewares/auth");// controlo el login
-// dotenv.config();
-
 // mercado pago
 // SDK de Mercado Pago
 // const mercadopago = require("mercadopago");
@@ -48,6 +38,7 @@ import adminUsuarios from "./routes/admin/usuarios.js";
 import adminProveedores from "./routes/admin/proveedores.js";
 import adminClientes from "./routes/admin/clientes.js";
 import adminTareas from "./routes/admin/tareas.js";
+import controlPanel from "./routes/admin/controlPanel.js"
 
 // initialization
 const app = express();
@@ -91,6 +82,7 @@ app.use("/admin/usuarios", auth, adminUsuarios);
 app.use("/admin/proveedores", auth, adminProveedores);
 app.use("/admin/clientes", auth, adminClientes);
 app.use("/admin/tareas", auth, adminTareas);
+app.use("/admin/controlPanel",auth,controlPanel);
 
 app.use(function (req, res, next) {
   next(createError(404));
