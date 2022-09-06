@@ -33,7 +33,7 @@ const create = async (req, res) =>
 const singleUpdate = async (req, res) => {
   try {
     const { id } = req.params;
-    const [updateProveedor] = await single(id);
+    const [updateProveedor] = await singleProv(id);
     console.log("proveedor:",updateProveedor)
     res.json(updateProveedor);  
   } catch (error) {
