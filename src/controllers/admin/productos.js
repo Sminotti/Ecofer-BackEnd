@@ -1,7 +1,20 @@
-import { get as getProductos, del as delProductos, single as singleProductos } from "../../models/productos.js";
-import { get as getImgProductos, single as singlePordImg } from "../../models/prodimagenes.js";
-import { get as getProveedores, single as singleProv } from "../../models/proveedores.js";
-import { get as getCategorias, single as singleCatProd } from "../../models/categoriasProd.js";
+import {
+  get as getProductos,
+  del as delProductos,
+  single as singleProductos,
+} from "../../models/productos.js";
+import {
+  get as getImgProductos,
+  single as singlePordImg,
+} from "../../models/prodimagenes.js";
+import {
+  get as getProveedores,
+  single as singleProv,
+} from "../../models/proveedores.js";
+import {
+  get as getCategorias,
+  single as singleCatProd,
+} from "../../models/categoriasProd.js";
 import service from "../../services/productos.js";
 
 const all = async (req, res) => {
@@ -10,6 +23,7 @@ const all = async (req, res) => {
     const imgProductos = await getImgProductos(); // [{}]
     const proveedores = await getProveedores(); // [{}]
     const categoriasProd = await getCategorias(); // [{}]
+    console.log("tabla de productos:",productos);
     res.json(productos, imgProductos, proveedores, categoriasProd);
   } catch (error) {
     console.log("all:", error);
@@ -23,6 +37,7 @@ const single = async (req, res) => {
     const [producto] = await singleProductos(id);
     const [proveedor] = await singleProv(id);
     const [categoriaProd] = await singleCatProd(id);
+    console.log("single tabla de productos:",producto);
     res.json(producto, imgProducto, proveedor, categoriaProd);
   } catch (error) {
     console.log("error single:", error);
@@ -30,25 +45,27 @@ const single = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  const idFile = await service.createProducto(
-    req.body,
-    req.file,
-    req.file.path // carpeta de donde agarra la imagen cloudinary para subirla
-  );
+  try {
+    const idFile = await service.createProducto(
+      req.body,
+      req.file,
+      req.file.path // carpeta de donde agarra la imagen cloudinary para subirla
+    );
 
-  res.json({
-    body: req.body,
-    imagen: req.file,
-    idFile: idFile,
-    estado: "succes",
-    message: "Producto creado exitosamente",
-  });
-
+    res.json({
+      body: req.body,
+      imagen: req.file,
+      idFile: idFile,
+      estado: "succes",
+      message: "Producto creado exitosamente",
+    });
+  } catch (error) {
+    console.log("error del crear:", error);
+  }
 };
 
 const del = async (req, res) => {
   try {
-
     const { id } = req.params;
     await delProductos(id);
 
@@ -80,20 +97,24 @@ const singleUpdate = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  await service.actualizarProducto(
-    req.body,
-    req.file,
-    req.params.id,
-    req.file.path
-  );
+  try {
+    await service.actualizarProducto(
+      req.body,
+      req.file,
+      req.params.id,
+      req.file.path
+    );
 
-  res.json({
-    body: req.body,
-    imagen: req.file,
-    id: req.params.id,
-    estado: "succes",
-    message: "Producto actualizado exitosamente",
-  });
+    res.json({
+      body: req.body,
+      imagen: req.file,
+      id: req.params.id,
+      estado: "succes",
+      message: "Producto actualizado exitosamente",
+    });
+  } catch (error) {
+    console.log("error update:", error);
+  }
 };
 
 export { all, single, create, singleUpdate, update, del };
