@@ -1,6 +1,7 @@
 import {
   get as getProductos,
   single as prodSingle,
+  filtrarProductosPorClase,
 } from "./../models/productos.js";
 import {
   get as getImgProductos,
@@ -31,6 +32,7 @@ const all = async (req, res) => {
 const single = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log("req.parmas:",req.params);
     const [imgProducto] = await imgSingle(id);
     const [producto] = await prodSingle(id);
     const [proveedor] = await provSingle(id);
@@ -43,10 +45,12 @@ const single = async (req, res) => {
 
 const filtrarProductos = async (req, res) => {
   try {
+    console.log("req.parmas:",req.params);
     const { categoria } = req.params;
-    const productos = await model.filtrarProductos(categoria);
+    const [productos] = await filtrarProductosPorClase(categoria);
     const categoriasProd = await getCategorias();
-    res.json(productos, categoriasProd);
+    res.json(productos,categoriasProd);
+   //res.status(200).json(productos, categoriasProd)
   } catch (e) {
     console.log(e);
   }
