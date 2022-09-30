@@ -49,8 +49,8 @@ const filtrarProductos = async (req, res) => {
     const { categoria } = req.params;
     const [productos] = await filtrarProductosPorClase(categoria);
     const categoriasProd = await getCategorias();
-    res.json(productos,categoriasProd);
-   //res.status(200).json(productos, categoriasProd)
+   // res.json(productos,categoriasProd);
+   res.status(200).json(productos, categoriasProd)
   } catch (e) {
     console.log(e);
   }

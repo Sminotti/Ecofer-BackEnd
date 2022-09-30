@@ -38,7 +38,7 @@ import adminUsuarios from "./routes/admin/usuarios.js";
 import adminProveedores from "./routes/admin/proveedores.js";
 import adminClientes from "./routes/admin/clientes.js";
 import adminTareas from "./routes/admin/tareas.js";
-import controlPanel from "./routes/admin/controlPanel.js"
+import controlPanel from "./routes/admin/controlPanel.js";
 
 // initialization
 const app = express();
@@ -82,21 +82,26 @@ app.use("/admin/usuarios", auth, adminUsuarios);
 app.use("/admin/proveedores", auth, adminProveedores);
 app.use("/admin/clientes", auth, adminClientes);
 app.use("/admin/tareas", auth, adminTareas);
-app.use("/admin/controlPanel",auth,controlPanel);
+app.use("/admin/controlPanel", auth, controlPanel);
 
 app.use(function (req, res, next) {
-  next(createError(404));
+  const err = new Error("Not Found");
+  err.status = 404;
+  next(err);
 });
 
 // error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-
+// app.use( (err, req, res, next) => {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get("env") === "development" ? err : {};
+app.use((err, req, res, next) => {
+  res.locals.error = err;
+  const status = err.status || 500;
   // render the error page
-  res.status(err.status || 500);
-  // res.render("error");
+  res.status(status || 500);
+  //res.status(err.status || 500);
+  res.render("error");
   console.log("error app", err);
 });
 
