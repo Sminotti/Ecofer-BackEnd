@@ -9,6 +9,7 @@ import {
 const all = async (req, res) => {
   try {
     const categoriasProd = await get(); // [{}]
+    console.log("categorias:",categoriasProd);
     res.json(categoriasProd);
   } catch (e) {
     console.log(e);

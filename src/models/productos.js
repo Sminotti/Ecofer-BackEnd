@@ -29,10 +29,11 @@ const single = (id) =>
 
 const filtrarProductosPorClase = (categoria) =>
   pool.query(
-    "SELECT prod.id as idProducto, catProd.id as idCategoria, prov.id as idProveedores, prodImg.id, prodImg.uid as imagenProducto, prod.unidades as unidadesProducto, prod.nombre as nombreProducto, prod.observacionesProd, catProd.clase as claseProducto, catProd.fuegos, catProd.descripcion as descripcion, prod.idCategoria, catProd.agExtintor as agenteExtintor, prod.kilos as kilosProducto, prod.precioVenta, prod.numeroSerie, prov.nombreFantasia, prov.contacto as contactoProv, prov.telefono as telefonoProv, catprod.aplicativos FROM ?? as prod JOIN ?? as catProd ON idCategoria = catProd.id JOIN ?? as prov ON prod.idProveedor = prov.id JOIN ?? as prodImg ON prodImg.idProductos = prod.id WHERE prod.habilitado = ? AND prod.idCategoria = ?",
+    "SELECT prod.id as idProducto, catProd.id as idCategoria, prov.id as idProveedores, prodImg.id as idImagen, prodImg.uid as imagenProducto, prodImg.idCloudinary ,prod.unidades as unidadesProducto, prod.nombre as nombreProducto, prod.observacionesProd, catProd.clase as claseProducto, catProd.fuegos, catProd.descripcion as descripcion, prod.idCategoria, catProd.agExtintor as agenteExtintor, prod.kilos as kilosProducto, prod.precioVenta, prod.numeroSerie, prod.precioCosto, prov.nombreFantasia, prov.contacto as contactoProv, prov.telefono as telefonoProv, prov.observacionesProv, catprod.aplicativos FROM ?? as prod JOIN ?? as catProd ON idCategoria = catProd.id JOIN ?? as prov ON prod.idProveedor = prov.id JOIN ?? as prodImg ON prodImg.idProductos = prod.id WHERE prod.habilitado = ? AND prod.idCategoria = ?",
+    // "SELECT prod.id as idProducto, catProd.id as idCategoria, prov.id as idProveedores, prodImg.id, prodImg.uid as imagenProducto, prod.unidades as unidadesProducto, prod.nombre as nombreProducto, prod.observacionesProd, catProd.clase as claseProducto, catProd.fuegos, catProd.descripcion as descripcion, prod.idCategoria, catProd.agExtintor as agenteExtintor, prod.kilos as kilosProducto, prod.precioVenta, prod.numeroSerie, prov.nombreFantasia, prov.contacto as contactoProv, prov.telefono as telefonoProv, catprod.aplicativos FROM ?? as prod JOIN ?? as catProd ON idCategoria = catProd.id JOIN ?? as prov ON prod.idProveedor = prov.id JOIN ?? as prodImg ON prodImg.idProductos = prod.id WHERE prod.habilitado = ? AND prod.idCategoria = ?",
     [T_PRODUCTOS, T_CATEGORIASPROD, T_PROVEEDORES, T_PRODUCTOS_IMAGENES, true, categoria]
   )
-    .then((response) => response)
+    .then((response) => console.log("categorias del SQL:",response))
     .catch((e) => e);
 
 const del = (id) =>
