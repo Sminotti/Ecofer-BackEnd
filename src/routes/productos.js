@@ -2,7 +2,6 @@ import { Router } from "express";
 const router = Router();
 
 import {all, single, filtrarProductos } from "../controllers/productos.js";
-import {all as allCategoriasProd} from "../controllers/admin/categoriasProd.js"
 
 router.get("/single/:id", single);
 router.get("/",all);

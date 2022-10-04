@@ -1,4 +1,4 @@
-GET   http://localhost:3000/productos/single/8
+
 
 ###
 POST http://localhost:3000/login

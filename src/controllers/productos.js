@@ -37,7 +37,7 @@ const single = async (req, res) => {
     const [producto] = await prodSingle(id);
     const [proveedor] = await provSingle(id);
     const [categoriaProd] = await catSingle(id);
-    res.estatus(200).json(producto, imgProducto, proveedor, categoriaProd);
+    res.json(producto, imgProducto, proveedor, categoriaProd);
   } catch (e) {
     console.log(e);
   }
@@ -48,8 +48,7 @@ const filtrarProductos = async (req, res) => {
     console.log("req.parmas:",req.params);
     const { categoria } = req.params;
     const productos = await filtrarProductosPorClase(categoria);
-    //const categoriasProd = await getCategorias();
-  //res.json(productos,categoriasProd);
+
    res.status(200).json(productos)
   } catch (e) {
     console.log(e);
