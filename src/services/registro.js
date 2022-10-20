@@ -1,6 +1,8 @@
 import { create as createPersona } from "./../models/personas.js";
 import { create as createEmpresa } from "./../models/empresas.js";
 import { create as createUser, createImages } from "./../models/usuarios.js";
+import {create as createCliente } from "./../models/clientes.js" 
+
 //const { imgFile } = require("../utils/fileHandler");
 //import default from "./../services/mail";
 import { send } from "./../services/mail.js";
@@ -50,6 +52,12 @@ const register = async (body, file,path) => {
       idPersona,
       confirmacionCorreo: linkUnico,
     });
+
+const { insertId:idCliente} = await createCliente({
+  idUsuarios,
+  idEmpresa,
+  idPersona,
+})
 
     const uid = imagenCloudinary.secure_url; // retorna la ruta de la imagen
     const idCloudinary = imagenCloudinary.public_id;

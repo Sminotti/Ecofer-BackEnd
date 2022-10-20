@@ -1,10 +1,20 @@
-import {get,create as createTareas,del as delTareas} from "../../models/tareas.js";
+import {
+  get as getTareas,
+  create as createTareas,
+  del as delTareas,
+} from "../../models/tareas.js";
 
-const allTarea = async (req, res) => {
+import { get as getClientes } from "../../models/clientes.js";
+
+const all = async (req, res) => {
   try {
-    const listaTareas = await get(); // [{}]
- 
-    res.json(listaTareas);
+    const listaTareas = await getTareas(); // [{}]
+    const listaClientes = await getClientes();
+
+    console.log("Lista de tareas: ", listaTareas);
+    console.log("Lista de clientes: ", listaClientes);
+
+    res.json(listaTareas, listaClientes);
   } catch (error) {
     console.log(error);
   }
@@ -12,16 +22,15 @@ const allTarea = async (req, res) => {
 
 const createTarea = async (req, res) => {
   createTareas(req.body)
-    .then((resultado) => console.log("Tarea creada exitosamente",resultado))
+    .then((resultado) => console.log("Tarea creada exitosamente", resultado))
     .catch((e) => console.log(e));
 
-    res.json({
-      body: req.body,
-      estado: "succes",
-      message: "Tarea creada exitosamente",
-    });
-
-}
+  res.json({
+    body: req.body,
+    estado: "succes",
+    message: "Tarea creada exitosamente",
+  });
+};
 
 const delTarea = async (req, res) => {
   try {
@@ -37,5 +46,4 @@ const delTarea = async (req, res) => {
   }
 };
 
-
-export {allTarea,createTarea,delTarea};
+export { all, createTarea, delTarea };

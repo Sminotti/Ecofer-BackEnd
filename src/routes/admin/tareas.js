@@ -1,9 +1,9 @@
 import { Router } from "express";
 const router = Router();
 
-import { allTarea, createTarea, delTarea } from "../../controllers/admin/tareas.js";
+import { all, createTarea, delTarea } from "../../controllers/admin/tareas.js";
 
-router.get("/", allTarea);
+router.get("/", all);// se carga el arra de cliente y tareas
 
 router.post("/create", createTarea);
 

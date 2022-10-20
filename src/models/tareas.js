@@ -1,5 +1,5 @@
 import pool from "../utils/bd.js";
-const T_TAREAS ="tareaslista";
+const T_TAREAS ="tarealista";
 
 const get = () =>
 pool.query("SELECT * FROM ?? WHERE habilitado = 1", [
